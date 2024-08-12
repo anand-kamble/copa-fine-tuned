@@ -14,9 +14,9 @@ This repository contains scripts and configurations to fine-tune a pre-trained l
 │   └── train.py            # Script to fine-tune the language model on aircraft fault data
 ├── infer.py                # Inference script (root-level for quick access)
 ├── outputs
-│   └── checkpoint-100      # Example output directory with model checkpoints
+│   └── checkpoint-100     
 ├── README.md               # Documentation for the repository
-└── train.py                # Training script (root-level for quick access)
+└── train.py                
 ```
 
 ## Requirements
@@ -103,14 +103,14 @@ The `outputs` directory stores all the checkpoints and generated outputs from bo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/anand-kamble/copa-fine-tuned
+   cd copa-fine-tuned
    ```
 
 2. Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   pip install torch transformers bitsandbytes datasets
    ```
 
 3. Fine-tune the model:
@@ -124,13 +124,4 @@ The `outputs` directory stores all the checkpoints and generated outputs from bo
    ```bash
    python infer.py
    ```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Hugging Face Transformers](https://github.com/huggingface/transformers)
-- [bitsandbytes](https://github.com/facebookresearch/bitsandbytes)
 
