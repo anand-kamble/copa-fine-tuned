@@ -132,7 +132,7 @@ The `outputs` directory stores all the checkpoints and generated outputs from bo
 2. Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   pip install torch transformers bitsandbytes datasets
    ```
 
 3. Fine-tune the model:
