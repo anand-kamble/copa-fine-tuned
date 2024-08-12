@@ -14,9 +14,9 @@ This repository contains scripts and configurations to fine-tune a pre-trained l
 │   └── train.py            # Script to fine-tune the language model on aircraft fault data
 ├── infer.py                # Inference script (root-level for quick access)
 ├── outputs
-│   └── checkpoint-100     
+│   └── checkpoint-100      # Example output directory with model checkpoints
 ├── README.md               # Documentation for the repository
-└── train.py                
+└── train.py                # Training script (root-level for quick access)
 ```
 
 ## Requirements
@@ -94,6 +94,28 @@ The `infer.py` script loads the fine-tuned model and generates the ATA code base
 - **8-bit Precision**: The model is loaded with reduced precision for efficient inference.
 - **Prompt-Based Prediction**: Input a fault description, and the model will predict the ATA code.
 
+### Testing Results
+
+During testing, the model was provided with the following input:
+
+```text
+THE EXIST SING BETWEEN 20-21 SEAT FOLL DOWNY
+```
+
+The expected output was a prediction like `HAS ATA 2`, but the model produced the following output:
+
+```text
+THE EXIST SING BETWEEN 20-21 SEAT FOLL DOWNY has ATA 25-20-000 has ATA 25-20-000 has ATA 25-20-000 has ATA 25-20-0
+```
+
+The result was not as accurate as expected, with the model predicting an ATA code of `25` instead of `2`, and it also repeated the prediction multiple times in a different format. This indicates that while the model can generate ATA codes, there may be issues with the base model selection, parameter tuning, or data preprocessing that need to be addressed.
+
+### Next Steps
+
+- **Improve Base Model Selection**: Consider using a different base model that may better capture the nuances of the aircraft fault data.
+- **Parameter Tuning**: Experiment with different LoRA configurations and training parameters to improve accuracy.
+- **Data Augmentation**: Enhance the training dataset with more examples or better preprocess the data to improve the model's ability to generalize.
+
 ## Output
 
 The `outputs` directory stores all the checkpoints and generated outputs from both training and inference processes. You can customize the output location by modifying the training and inference scripts.
@@ -103,14 +125,14 @@ The `outputs` directory stores all the checkpoints and generated outputs from bo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/anand-kamble/copa-fine-tuned
+   git clone https://github.com/anand-kamble/copa-fine-tuned.git
    cd copa-fine-tuned
    ```
 
 2. Install dependencies:
 
    ```bash
-   pip install torch transformers bitsandbytes datasets
+   pip install -r requirements.txt
    ```
 
 3. Fine-tune the model:
@@ -125,3 +147,11 @@ The `outputs` directory stores all the checkpoints and generated outputs from bo
    python infer.py
    ```
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Hugging Face Transformers](https://github.com/huggingface/transformers)
+- [bitsandbytes](https://github.com/facebookresearch/bitsandbytes)
