@@ -1,0 +1,1 @@
+{"output_dir": "copa_output", "output_format": "parquet", "output_file_name": "filtered.parquet", "data_files": [{"fileName": "ISDP LOGBOOK REPORT.csv", "fileType": "csv", "colOfInterest": ["FLEET", "FAULT_FOUND_DATE", "FAULT_SOURCE", "FAULT_NAME", "FAULT_SDESC", "CORRECTIVE_ACTION", "MAINT_DELAY_TIME_QT", "ATA", "FAULT_SEVERITY"], "separator": ","}], "test_rows": 33000}

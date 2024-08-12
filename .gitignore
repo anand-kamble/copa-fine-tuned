@@ -1,0 +1,7 @@
+*.bin
+*.h5
+*.msgpack
+*.pt
+*.pdparams
+*.safetensors
+*.npz
